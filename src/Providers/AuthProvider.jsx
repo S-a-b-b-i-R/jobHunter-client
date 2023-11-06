@@ -11,6 +11,8 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import { useMutation } from "@tanstack/react-query";
+import { getJWTToken } from "../APIs/api";
 
 export const AuthContext = createContext();
 const googleSignInProvider = new GoogleAuthProvider();
@@ -19,6 +21,10 @@ const githubSignInProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const { mutateAsync } = useMutation({
+        mutationFn: getJWTToken,
+    });
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -50,8 +56,18 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            const uid = currentUser?.uid || user?.uid;
+            const loggedUser = { uid: uid };
             setUser(currentUser);
+            console.log("current user", currentUser);
             setLoading(false);
+            if (currentUser) {
+                try {
+                    mutateAsync(loggedUser);
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         });
         return () => unSubscribe();
     }, []);
