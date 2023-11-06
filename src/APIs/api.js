@@ -23,3 +23,19 @@ export const getLogout = async (loggedInUser) => {
     const data = await response.data;
     return data;
 };
+
+export const getAllJobCategories = async () => {
+    const response = await axios.get(
+        "http://localhost:5000/api/jobs/categories"
+    );
+    const data = await response.data;
+    return data;
+};
+
+export const postJob = async (job) => {
+    const response = await axios.post("http://localhost:5000/api/jobs", job, {
+        withCredentials: true,
+    });
+    const data = await response.data;
+    return data;
+};
