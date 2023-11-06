@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import { useMutation } from "@tanstack/react-query";
-import { getJWTToken } from "../APIs/api";
+import { getJWTToken, getLogout } from "../APIs/api";
 
 export const AuthContext = createContext();
 const googleSignInProvider = new GoogleAuthProvider();
@@ -22,8 +22,12 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const { mutateAsync } = useMutation({
+    const mutateLogin = useMutation({
         mutationFn: getJWTToken,
+    });
+
+    const mutateLogout = useMutation({
+        mutationFn: getLogout,
     });
 
     const createUser = (email, password) => {
@@ -48,7 +52,8 @@ const AuthProvider = ({ children }) => {
 
     const updateUserProfile = (fullName, url) => {
         setLoading(true);
-        return updateProfile({
+        console.log(fullName, url);
+        return updateProfile(auth.currentUser, {
             displayName: fullName,
             photoURL: url,
         });
@@ -59,14 +64,16 @@ const AuthProvider = ({ children }) => {
             const uid = currentUser?.uid || user?.uid;
             const loggedUser = { uid: uid };
             setUser(currentUser);
-            console.log("current user", currentUser);
             setLoading(false);
             if (currentUser) {
                 try {
-                    mutateAsync(loggedUser);
+                    mutateLogin.mutateAsync(loggedUser);
                 } catch (error) {
                     console.log(error);
                 }
+            } else {
+                console.log("logged out");
+                mutateLogout.mutateAsync(loggedUser);
             }
         });
         return () => unSubscribe();

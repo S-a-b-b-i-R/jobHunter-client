@@ -139,12 +139,12 @@ const Navbar = () => {
                 )}
                 {user ? (
                     <details className="dropdown">
-                        <summary className="m-1 btn border-none text-white font-bold hover:bg-white hover:text-red-700">
+                        <summary className="m-1 btn border-none font-bold hover:bg-white hover:text-mainCol">
                             {user.displayName !== null
                                 ? user.displayName
                                 : user.email}
                         </summary>
-                        <ul className="p-2 shadow menu dropdown-content z-[1] text-white rounded-box">
+                        <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box">
                             <li>
                                 <Link
                                     onClick={handleLogOut}

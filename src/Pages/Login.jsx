@@ -62,7 +62,7 @@ const Login = () => {
             });
     };
     return (
-        <div className="md:w-3/4 lg:w-2/3 xl:w-2/3 mx-auto bg-base-200 bg-opacity-50 rounded-md">
+        <div className="md:w-3/4 lg:w-2/3 xl:w-2/3 mx-auto bg-base-200 bg-opacity-50 rounded-md p-2">
             <form onSubmit={handleSubmit} className="card-body ">
                 <h1 className="text-2xl font-bold text-center">Please Login</h1>
                 <div className="form-control">
@@ -129,8 +129,8 @@ const Login = () => {
             </div>
             <p className="text-center">
                 Don&rsquo;t have an account?{" "}
-                <Link to="/register" className="text-mainCol font-bold">
-                    Register
+                <Link to="/signup" className="text-mainCol font-bold">
+                    Sign Up
                 </Link>
             </p>
         </div>
