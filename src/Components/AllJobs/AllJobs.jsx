@@ -19,7 +19,6 @@ const AllJobs = () => {
     });
 
     const acitveTab = (index) => {
-        console.log(index);
         setActiveTabIndex(index);
     };
 

@@ -28,7 +28,8 @@ const AddJob = () => {
         const jobDescription = e.target.jobDescription.value;
         const salaryrange = e.target.salaryrange.value;
         const lastDate = deadline;
-        const postedBy = user.uid;
+        const postedById = user.uid;
+        const postedByName = user.displayName || "";
         const postedDate = new Date().toISOString().slice(0, 10);
         const applicantsNumber = 0;
 
@@ -40,7 +41,8 @@ const AddJob = () => {
             jobDescription,
             salaryrange,
             lastDate,
-            postedBy,
+            postedById,
+            postedByName,
             postedDate,
             applicantsNumber,
         };
