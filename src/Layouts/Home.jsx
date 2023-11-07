@@ -1,11 +1,11 @@
+import AllJobs from "../Components/AllJobs/AllJobs";
 import Banner from "../Components/Banner/Banner";
-import Loading from "../Components/Loading/Loading";
 
 const Home = () => {
     return (
-        <div>
+        <div className="space-y-4">
             <Banner />
-            <Loading />
+            <AllJobs />
         </div>
     );
 };

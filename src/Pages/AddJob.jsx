@@ -29,6 +29,8 @@ const AddJob = () => {
         const salaryrange = e.target.salaryrange.value;
         const lastDate = deadline;
         const postedBy = user.uid;
+        const postedDate = new Date().toISOString().slice(0, 10);
+        const applicantsNumber = 0;
 
         const jobData = {
             jobTitle,
@@ -39,8 +41,9 @@ const AddJob = () => {
             salaryrange,
             lastDate,
             postedBy,
+            postedDate,
+            applicantsNumber,
         };
-        console.log(jobData);
 
         try {
             await mutateAsync(jobData);
@@ -49,6 +52,7 @@ const AddJob = () => {
                 text: "Thank you for Posting a new job",
                 icon: "success",
             });
+            e.target.reset();
         } catch (error) {
             console.log(error);
         }

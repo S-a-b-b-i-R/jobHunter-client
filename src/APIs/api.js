@@ -39,3 +39,17 @@ export const postJob = async (job) => {
     const data = await response.data;
     return data;
 };
+
+export const getAllJobs = async () => {
+    const response = await axios.get("http://localhost:5000/api/jobs");
+    const data = await response.data;
+    return data;
+};
+
+export const getJobsByCategory = async (categoryId) => {
+    const response = await axios.get(
+        `http://localhost:5000/api/jobs/${categoryId}`
+    );
+    const data = await response.data;
+    return data;
+};
