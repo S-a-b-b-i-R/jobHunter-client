@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { addJobApply, getJobById } from "../APIs/api";
+import { addJobApply, getIsApplied, getJobById } from "../APIs/api";
 import Loading from "../Components/Loading/Loading";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -9,10 +9,16 @@ import Swal from "sweetalert2";
 const JobDetail = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    const queryClient = useQueryClient();
 
     const { data: job, isSuccess } = useQuery({
         queryKey: ["job", id],
         queryFn: async () => await getJobById(id),
+    });
+
+    const { data: isApplied } = useQuery({
+        queryKey: ["isApplied", id],
+        queryFn: async () => await getIsApplied(job._id, user.uid),
     });
 
     const { mutateAsync } = useMutation({
@@ -24,12 +30,24 @@ const JobDetail = () => {
     }
 
     const handleOpenModal = () => {
-        const toDayDate = new Date().toISOString().slice(0, 10);
-        const lastDate = job.lastDate;
-        if (toDayDate > lastDate) {
-            alert("Sorry! The deadline is over");
+        if (isApplied) {
+            Swal.fire({
+                title: "Already Applied",
+                text: "You have already applied for this job",
+                icon: "warning",
+            });
         } else {
-            document.getElementById("my_modal_5").showModal();
+            const toDayDate = new Date().toISOString().slice(0, 10);
+            const lastDate = job.lastDate;
+            if (toDayDate > lastDate) {
+                Swal.fire({
+                    title: "Deadline Passed",
+                    text: "You cannot apply for this job",
+                    icon: "warning",
+                });
+            } else {
+                document.getElementById("my_modal_5").showModal();
+            }
         }
     };
 
@@ -53,7 +71,6 @@ const JobDetail = () => {
             resumeUrl,
             appliedDate,
         };
-        console.log(appliedJob);
         try {
             await mutateAsync(appliedJob);
             Swal.fire({
@@ -61,6 +78,7 @@ const JobDetail = () => {
                 text: "Thank you for applying",
                 icon: "success",
             });
+            queryClient.invalidateQueries({ queryKey: ["job"] });
             e.target.reset();
             handleCloseModal();
         } catch (error) {

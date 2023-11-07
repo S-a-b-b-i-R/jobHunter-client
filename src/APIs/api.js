@@ -71,3 +71,11 @@ export const addJobApply = async (appliedjob) => {
     const data = await response.data;
     return data;
 };
+
+export const getIsApplied = async (jobId, userId) => {
+    const response = await axios.get(
+        `http://localhost:5000/api/user/jobs/${userId}/${jobId}`
+    );
+    const data = await response.data;
+    return data;
+};
