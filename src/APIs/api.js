@@ -79,3 +79,13 @@ export const getIsApplied = async (jobId, userId) => {
     const data = await response.data;
     return data;
 };
+
+export const getJobsBySearchString = async (searchString) => {
+    const queryString = searchString ? searchString : "null";
+    const response = await axios.get(
+        `http://localhost:5000/api/jobs/search/${queryString}`
+        // `http://localhost:5000/api/jobs/search?searchString=${searchString}`
+    );
+    const data = await response.data;
+    return data;
+};
