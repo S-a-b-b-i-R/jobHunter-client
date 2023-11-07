@@ -38,7 +38,7 @@ const AllJobs = () => {
 
     return (
         <div className="flex flex-col items-center gap-5">
-            <div className="tabs">
+            <div className="tabs justify-center">
                 <a
                     className={`tab text-xl ${
                         "" === activeTabIndex
@@ -66,7 +66,11 @@ const AllJobs = () => {
                 })}
             </div>
             <div
-                className={`${isFetching ? "flex" : "grid grid-cols-3 gap-2"}`}
+                className={`${
+                    isFetching
+                        ? "flex"
+                        : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+                }`}
             >
                 {isFetching ? (
                     <Loading />
