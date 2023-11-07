@@ -59,3 +59,15 @@ export const getJobById = async (jobId) => {
     const data = await response.data;
     return data;
 };
+
+export const addJobApply = async (appliedjob) => {
+    const response = await axios.post(
+        "http://localhost:5000/api/user/jobs",
+        appliedjob,
+        {
+            withCredentials: true,
+        }
+    );
+    const data = await response.data;
+    return data;
+};
