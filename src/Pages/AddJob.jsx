@@ -32,6 +32,7 @@ const AddJob = () => {
         const postedByName = user.displayName || "";
         const postedDate = new Date().toISOString().slice(0, 10);
         const applicantsNumber = 0;
+        const uid = user.uid;
 
         const jobData = {
             jobTitle,
@@ -45,6 +46,7 @@ const AddJob = () => {
             postedByName,
             postedDate,
             applicantsNumber,
+            uid,
         };
 
         try {

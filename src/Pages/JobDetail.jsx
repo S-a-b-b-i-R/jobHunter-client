@@ -30,8 +30,15 @@ const JobDetail = () => {
     }
 
     const handleOpenModal = () => {
+        if (user.uid === job.uid) {
+            return Swal.fire({
+                title: "Cannot Apply",
+                text: "You cannot apply for your own job",
+                icon: "warning",
+            });
+        }
         if (isApplied) {
-            Swal.fire({
+            return Swal.fire({
                 title: "Already Applied",
                 text: "You have already applied for this job",
                 icon: "warning",
@@ -40,7 +47,7 @@ const JobDetail = () => {
             const toDayDate = new Date().toISOString().slice(0, 10);
             const lastDate = job.lastDate;
             if (toDayDate > lastDate) {
-                Swal.fire({
+                return Swal.fire({
                     title: "Deadline Passed",
                     text: "You cannot apply for this job",
                     icon: "warning",
