@@ -53,3 +53,9 @@ export const getJobsByCategory = async (categoryId) => {
     const data = await response.data;
     return data;
 };
+
+export const getJobById = async (jobId) => {
+    const response = await axios.get(`http://localhost:5000/api/job/${jobId}`);
+    const data = await response.data;
+    return data;
+};

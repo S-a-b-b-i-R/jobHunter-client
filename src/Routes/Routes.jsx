@@ -5,6 +5,7 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import AddJob from "../Pages/AddJob";
 import Error from "../Components/Loading/Error";
+import JobDetail from "../Pages/JobDetail";
 
 const Routes = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/addjobs",
                 element: <AddJob />,
+            },
+            {
+                path: "jobdetail/:id",
+                element: <JobDetail />,
             },
         ],
     },
