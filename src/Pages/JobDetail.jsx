@@ -95,7 +95,7 @@ const JobDetail = () => {
 
     return (
         <div className="flex items-center">
-            <div className="w-1/2">
+            <div className="w-full lg:w-1/2">
                 <div className="flex flex-col items-start gap-3">
                     <img src={job.imageUrl} className="w-28 rounded-lg" />
                     <div className="space-y-3">
@@ -124,7 +124,7 @@ const JobDetail = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 hidden lg:block">
                 <img src="https://i.ibb.co/M1VMvGk/jobdetail.png" alt="" />
             </div>
 
