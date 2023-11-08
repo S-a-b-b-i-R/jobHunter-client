@@ -93,7 +93,7 @@ const Register = () => {
                         type="name"
                         name="name"
                         placeholder="name"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                 </div>
@@ -105,7 +105,7 @@ const Register = () => {
                         type="email"
                         name="email"
                         placeholder="email"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                 </div>
@@ -117,7 +117,7 @@ const Register = () => {
                         type="url"
                         name="url"
                         placeholder="url"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                 </div>
@@ -129,7 +129,7 @@ const Register = () => {
                         type="password"
                         name="password"
                         placeholder="password"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                     <label className="label">

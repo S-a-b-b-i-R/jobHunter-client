@@ -71,7 +71,7 @@ const Login = () => {
                         type="email"
                         placeholder="email"
                         name="email"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                 </div>
@@ -83,7 +83,7 @@ const Login = () => {
                         type="password"
                         placeholder="password"
                         name="password"
-                        className="input input-bordered"
+                        className="input input-bordered focus:outline-none"
                         required
                     />
                     <label className="label">
