@@ -52,28 +52,28 @@ const Process = () => {
                     <ul className="list-inside list-disc">
                         <li>
                             <span className="font-bold">
-                                Diverse Opportunities:
+                                Quality Candidates:
                             </span>{" "}
-                            We offer a vast array of job listings, from
-                            entry-level positions to executive roles, across
-                            various industries and locations, ensuring
-                            there&apos;s something for everyone.
+                            We attract a diverse pool of skilled professionals,
+                            ensuring you have access to top-tier talent with a
+                            wide range of expertise and experience levels.
                         </li>
                         <li>
                             <span className="font-bold">
-                                User-Centric Experience:
+                                Efficient Screening:
                             </span>{" "}
-                            Our user-friendly platform simplifies your job
-                            search, allowing you to filter and find the perfect
-                            job quickly and effortlessly.
+                            Our platform streamlines the hiring process,
+                            allowing you to easily filter, review, and connect
+                            with candidates who meet your specific job
+                            requirements.
                         </li>
                         <li>
                             <span className="font-bold">
-                                Insightful Resources:
+                                Data-Driven Insights:
                             </span>{" "}
-                            We provide valuable resources, career advice, and
-                            tips to help you excel in your job search and
-                            professional development.
+                            Gain valuable insights into the job market and
+                            candidate trends, empowering you to make informed
+                            decisions and stay ahead of the competition.
                         </li>
                     </ul>
                 </div>
