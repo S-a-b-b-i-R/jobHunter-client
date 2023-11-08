@@ -2,9 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import PropTypes from "prop-types";
 import { getAllJobCategories } from "../../APIs/api";
 import Loading from "../Loading/Loading";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const JobCard = ({ job }) => {
+    const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const { data: categories, isSuccess } = useQuery({
         queryKey: ["categories"],
         queryFn: async () => await getAllJobCategories(),
@@ -13,6 +18,19 @@ const JobCard = ({ job }) => {
     if (!isSuccess) {
         return <Loading />;
     }
+    const handleRouteToJobDetail = () => {
+        if (!user) {
+            Swal.fire({
+                title: "Login Required",
+                text: "Please Login to view job details",
+                icon: "warning",
+            }).then(() => {
+                navigate("/login");
+            });
+        } else {
+            navigate(`/jobdetail/${job._id}`);
+        }
+    };
     return (
         <div className="card w-80 bg-base-100 shadow-xl">
             <figure>
@@ -34,12 +52,12 @@ const JobCard = ({ job }) => {
                 <p>Deadline: {job.lastDate}</p>
                 <p>Applications: {job.applicantsNumber}</p>
                 <div className="card-actions justify-center">
-                    <Link
-                        to={`/jobdetail/${job._id}`}
+                    <button
+                        onClick={handleRouteToJobDetail}
                         className="badge badge-outline text-lg p-4 hover:bg-mainCol hover:text-white hover:scale-110 hover:cursor-pointer"
                     >
                         Details
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>

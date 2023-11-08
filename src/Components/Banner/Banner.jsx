@@ -1,3 +1,5 @@
+import Typewriter from "typewriter-effect";
+
 const Banner = () => {
     return (
         <div className="space-y-5">
@@ -5,7 +7,20 @@ const Banner = () => {
                 <div className="w-full md:w-2/3 lg:w-1/2">
                     <h1 className="text-center md:text-left text-6xl font-extrabold">
                         Your next <br />{" "}
-                        <span className="text-mainCol">Dream Job</span> <br />
+                        <span className="text-mainCol">
+                            <Typewriter
+                                options={{
+                                    strings: [
+                                        "Dream Job",
+                                        "Dream Life",
+                                        "Dream Career",
+                                    ],
+                                    autoStart: true,
+                                    loop: true,
+                                }}
+                            />
+                        </span>
+                        <br />
                         is a few steps away
                     </h1>
                 </div>

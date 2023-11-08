@@ -57,13 +57,13 @@ const ContactUs = () => {
                                 ></textarea>
                             </div>
                         </div>
-                        <div className="w-full flex justify-center">
-                            <button className="btn border-none bg-mainCol hover:bg-mainCol text-white font-bold normal-case">
-                                Send Message
-                            </button>
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div className="w-full flex justify-center">
+                <button className="btn border-none bg-mainCol hover:bg-mainCol text-white font-bold normal-case">
+                    Send Message
+                </button>
             </div>
         </div>
     );
