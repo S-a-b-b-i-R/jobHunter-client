@@ -13,7 +13,6 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import { useMutation } from "@tanstack/react-query";
 import { getJWTToken, getLogout } from "../APIs/api";
-import axios from "axios";
 
 export const AuthContext = createContext();
 const googleSignInProvider = new GoogleAuthProvider();
@@ -66,38 +65,15 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             if (currentUser) {
-                axios
-                    .post(
-                        "https://job-hunter-server-psi.vercel.app/api/auth/jwt",
-                        loggedUser,
-                        { withCredentials: true }
-                    )
-                    .then((res) => {
-                        console.log("logged in");
-                    });
+                try {
+                    mutateLogin.mutateAsync(loggedUser);
+                } catch (error) {
+                    console.log(error);
+                }
             } else {
-                axios
-                    .post(
-                        "https://job-hunter-server-psi.vercel.app/api/auth/logout",
-                        loggedUser,
-                        {
-                            withCredentials: true,
-                        }
-                    )
-                    .then((res) => {
-                        console.log("logged out");
-                    });
+                console.log("logged out");
+                mutateLogout.mutateAsync(loggedUser);
             }
-            // if (currentUser) {
-            //     try {
-            //         mutateLogin.mutateAsync(loggedUser);
-            //     } catch (error) {
-            //         console.log(error);
-            //     }
-            // } else {
-            //     console.log("logged out");
-            //     mutateLogout.mutateAsync(loggedUser);
-            // }
         });
         return () => {
             return unSubscribe();
