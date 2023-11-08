@@ -38,9 +38,15 @@ const AppliedJobs = () => {
     useEffect(() => {
         setLoadedJobs(appliedjobs);
         refetch();
-    }, [user?.uid, refetch]);
+    }, [user?.uid, refetch, appliedjobs]);
 
-    if (!user || isLoading || !isFetched || categories.isLoading) {
+    if (
+        !user ||
+        isLoading ||
+        !isFetched ||
+        categories.isLoading ||
+        !isFetchedAll
+    ) {
         return <Loading />;
     }
 
@@ -95,7 +101,7 @@ const AppliedJobs = () => {
                 {isFetching ? (
                     <Loading />
                 ) : (
-                    loadedJobs.map((job) => (
+                    loadedJobs?.map((job) => (
                         <AppliedJobCard
                             job={job}
                             allJobs={allJobs}

@@ -31,12 +31,13 @@ const Blogs = () => {
                             requiring the user to re-enter their credentials.
                             Storing these tokens on the client-side poses
                             security risks, as they can be vulnerable to theft
-                            or misuse. It's best practice to store them securely
-                            on the server-side, such as in an HTTP-only cookie
-                            or a secure server-side session, to ensure the
-                            safety and integrity of your authentication system.
-                            If we really have to store them in the client side,
-                            the best option is to store them in Cookies.{" "}
+                            or misuse. It&apos;s best practice to store them
+                            securely on the server-side, such as in an HTTP-only
+                            cookie or a secure server-side session, to ensure
+                            the safety and integrity of your authentication
+                            system. If we really have to store them in the
+                            client side, the best option is to store them in
+                            Cookies.{" "}
                         </p>
                     </div>
                 </div>
