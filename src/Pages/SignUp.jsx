@@ -44,7 +44,6 @@ const Register = () => {
         createUser(data.get("email"), data.get("password"))
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 updateUserProfile(data.get("name"), data.get("url"))
                     .then(() => {
                         console.log("profile updated");

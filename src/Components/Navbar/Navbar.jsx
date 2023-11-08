@@ -41,7 +41,6 @@ const Navbar = () => {
         e.preventDefault();
         logout()
             .then(() => {
-                console.log("Logged out");
                 setSignedOut(!signedOut);
             })
             .catch((error) => {

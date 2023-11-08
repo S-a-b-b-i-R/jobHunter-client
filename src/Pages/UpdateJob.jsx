@@ -60,14 +60,17 @@ const UpdateJob = () => {
         };
 
         try {
-            await fetch(`http://localhost:5000/api/jobs/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify(jobData),
-            })
+            await fetch(
+                `https://job-hunter-server-psi.vercel.app/api/jobs/${id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: "include",
+                    body: JSON.stringify(jobData),
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     if (data) {

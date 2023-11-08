@@ -17,7 +17,6 @@ const Login = () => {
         signIn(data.get("email"), data.get("password"))
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
                 setError("");
                 Swal.fire({
                     title: "Login successful",
@@ -48,7 +47,6 @@ const Login = () => {
         media()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 if (state) {
                     navigate(state);
                 } else {

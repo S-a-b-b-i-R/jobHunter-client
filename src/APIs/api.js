@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getJWTToken = async (loggedInUser) => {
     const response = await axios.post(
-        "http://localhost:5000/api/auth/jwt",
+        "https://job-hunter-server-psi.vercel.app/api/auth/jwt",
         loggedInUser,
         {
             withCredentials: true,
@@ -14,7 +14,7 @@ export const getJWTToken = async (loggedInUser) => {
 
 export const getLogout = async (loggedInUser) => {
     const response = await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "https://job-hunter-server-psi.vercel.app/api/auth/logout",
         loggedInUser,
         {
             withCredentials: true,
@@ -26,24 +26,27 @@ export const getLogout = async (loggedInUser) => {
 
 export const getAllJobCategories = async () => {
     const response = await axios.get(
-        "http://localhost:5000/api/jobs/categories"
+        "https://job-hunter-server-psi.vercel.app/api/jobs/categories"
     );
     const data = await response.data;
     return data;
 };
 
 export const postJob = async (job) => {
-    const response = await axios.post("http://localhost:5000/api/jobs", job, {
-        withCredentials: true,
-    });
+    const response = await axios.post(
+        "https://job-hunter-server-psi.vercel.app/api/jobs",
+        job,
+        {
+            withCredentials: true,
+        }
+    );
     const data = await response.data;
     return data;
 };
 
 export const updateJob = async (jobId, jobData) => {
-    console.log(jobId, jobData);
     const response = await axios.put(
-        `http://localhost:5000/api/jobs/${jobId}`,
+        `https://job-hunter-server-psi.vercel.app/api/jobs/${jobId}`,
         jobData,
         {
             withCredentials: true,
@@ -54,28 +57,32 @@ export const updateJob = async (jobId, jobData) => {
 };
 
 export const getAllJobs = async () => {
-    const response = await axios.get("http://localhost:5000/api/jobs");
+    const response = await axios.get(
+        "https://job-hunter-server-psi.vercel.app/api/jobs"
+    );
     const data = await response.data;
     return data;
 };
 
 export const getJobsByCategory = async (categoryId) => {
     const response = await axios.get(
-        `http://localhost:5000/api/jobs/${categoryId}`
+        `https://job-hunter-server-psi.vercel.app/api/jobs/${categoryId}`
     );
     const data = await response.data;
     return data;
 };
 
 export const getJobById = async (jobId) => {
-    const response = await axios.get(`http://localhost:5000/api/job/${jobId}`);
+    const response = await axios.get(
+        `https://job-hunter-server-psi.vercel.app/api/job/${jobId}`
+    );
     const data = await response.data;
     return data;
 };
 
 export const addJobApply = async (appliedjob) => {
     const response = await axios.post(
-        "http://localhost:5000/api/user/jobs",
+        "https://job-hunter-server-psi.vercel.app/api/user/jobs",
         appliedjob,
         {
             withCredentials: true,
@@ -87,7 +94,7 @@ export const addJobApply = async (appliedjob) => {
 
 export const getIsApplied = async (jobId, userId) => {
     const response = await axios.get(
-        `http://localhost:5000/api/user/jobs/${userId}/${jobId}`
+        `https://job-hunter-server-psi.vercel.app/api/user/jobs/${userId}/${jobId}`
     );
     const data = await response.data;
     return data;
@@ -96,8 +103,8 @@ export const getIsApplied = async (jobId, userId) => {
 export const getJobsBySearchString = async (searchString) => {
     const queryString = searchString ? searchString : "null";
     const response = await axios.get(
-        `http://localhost:5000/api/jobs/search/${queryString}`
-        // `http://localhost:5000/api/jobs/search?searchString=${searchString}`
+        `https://job-hunter-server-psi.vercel.app/api/jobs/search/${queryString}`
+        // `https://job-hunter-server-psi.vercel.app/api/jobs/search?searchString=${searchString}`
     );
     const data = await response.data;
     return data;
@@ -106,7 +113,7 @@ export const getJobsBySearchString = async (searchString) => {
 export const getJobsPostedByUser = async (userId) => {
     try {
         const response = await axios.get(
-            `http://localhost:5000/api/user/jobs/${userId}`
+            `https://job-hunter-server-psi.vercel.app/api/user/jobs/${userId}`
         );
         const data = await response.data;
         return data;
@@ -118,7 +125,7 @@ export const getJobsPostedByUser = async (userId) => {
 export const deleteJob = async (jobId) => {
     try {
         const response = await axios.delete(
-            `http://localhost:5000/api/jobs/${jobId}`,
+            `https://job-hunter-server-psi.vercel.app/api/jobs/${jobId}`,
             {
                 withCredentials: true,
             }
@@ -133,7 +140,7 @@ export const deleteJob = async (jobId) => {
 export const getAppliedJobs = async (userId) => {
     try {
         const response = await axios.get(
-            `http://localhost:5000/api/user/appliedjobs/${userId}`,
+            `https://job-hunter-server-psi.vercel.app/api/user/appliedjobs/${userId}`,
             {
                 withCredentials: true,
             }
