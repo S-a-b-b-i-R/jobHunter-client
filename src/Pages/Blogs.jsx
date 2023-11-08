@@ -119,7 +119,29 @@ const Blogs = () => {
                         Explain your code
                     </div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p>
+                            The explanation of the code can be separated in two
+                            parts. One for the server side and another for the
+                            server side. <br />
+                            <span className="font-bold">Server Side:</span>{" "}
+                            <br />
+                            The server side is built with Express Js and MongoDb
+                            to store the data. I am using Jason Web Token for
+                            token based authentication. This token is also used
+                            to verify user authentication on some APIs. The
+                            server side is deployed in Vercel. <br />
+                            <span className="font-bold">Client Side:</span>{" "}
+                            <br />
+                            The client side is built with React Js and Tailwind
+                            and DaisyUi. I am using Tanstack Query for managing
+                            the state of the application. For the CRUD
+                            operations, I have implemented Create, Read &amp;
+                            Delete with Tanstack useQuery and useMutation.
+                            However, I couldn&apos;t implement the Update
+                            operation using Tanstack useMutation. I will
+                            definitely fix this after the assignment is marked.
+                            The client side is deployed in Firebase.{" "}
+                        </p>
                     </div>
                 </div>
             </div>
