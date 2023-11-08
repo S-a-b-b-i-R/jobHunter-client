@@ -20,10 +20,6 @@ const UpdateJob = () => {
         },
     });
 
-    // const { mutateAsync } = useMutation({
-    //     mutationFn: updateJob,
-    // });
-
     const categories = useQuery({
         queryKey: ["categories"],
         queryFn: async () => await getAllJobCategories(),
