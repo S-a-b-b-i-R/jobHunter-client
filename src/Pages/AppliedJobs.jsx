@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllJobCategories, getAllJobs, getAppliedJobs } from "../APIs/api";
 import Loading from "../Components/Loading/Loading";
 import AppliedJobCard from "../Components/AppliedJobCard";
+import { usePDF } from "react-to-pdf";
+import { FaDownload } from "react-icons/fa";
 
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
@@ -39,7 +41,7 @@ const AppliedJobs = () => {
         setLoadedJobs(appliedjobs);
         refetch();
     }, [user?.uid, refetch, appliedjobs]);
-
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
     if (
         !user ||
         isLoading ||
@@ -92,6 +94,7 @@ const AppliedJobs = () => {
                 })}
             </div>
             <div
+                ref={targetRef}
                 className={`${
                     isFetching
                         ? "flex justify-center"
@@ -109,6 +112,11 @@ const AppliedJobs = () => {
                         />
                     ))
                 )}
+            </div>
+            <div className="flex justify-center">
+                <button className="btn normal-case" onClick={() => toPDF()}>
+                    Download Summary <FaDownload />
+                </button>
             </div>
         </div>
     );

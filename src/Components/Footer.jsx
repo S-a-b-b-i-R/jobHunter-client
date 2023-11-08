@@ -44,10 +44,15 @@ const Footer = () => {
                     </a>
                 </div>
             </nav>
+            <div>
+                <img
+                    className="h-20"
+                    src="https://i.ibb.co/1J6Q5Q5/logo-transparent.png"
+                    alt=""
+                />
+            </div>
             <aside>
-                <p>
-                    Copyright © 2023 - All right reserved by ACME Industries Ltd
-                </p>
+                <p>Copyright © 2023 - All right reserved by JobHunter</p>
             </aside>
         </footer>
     );
