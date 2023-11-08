@@ -65,6 +65,7 @@ const JobDetail = () => {
     const handleApplyJob = async (e) => {
         e.preventDefault();
         const appJob = job._id;
+        const appJobCat = job.jobCategoryId;
         const userId = user.uid;
         const userEmail = e.target.email.value;
         const userName = e.target.name.value;
@@ -72,6 +73,7 @@ const JobDetail = () => {
         const appliedDate = new Date().toISOString().slice(0, 10);
         const appliedJob = {
             appJob,
+            appJobCat,
             userId,
             userEmail,
             userName,

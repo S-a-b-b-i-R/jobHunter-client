@@ -1,6 +1,6 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { getAllJobCategories, getJobById, updateJob } from "../APIs/api";
+import { getAllJobCategories, getJobById } from "../APIs/api";
 import Loading from "../Components/Loading/Loading";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -20,9 +20,9 @@ const UpdateJob = () => {
         },
     });
 
-    const { mutateAsync } = useMutation({
-        mutationFn: updateJob,
-    });
+    // const { mutateAsync } = useMutation({
+    //     mutationFn: updateJob,
+    // });
 
     const categories = useQuery({
         queryKey: ["categories"],

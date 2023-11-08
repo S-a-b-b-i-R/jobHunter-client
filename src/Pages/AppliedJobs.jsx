@@ -1,42 +1,63 @@
-import { useEffect, useState } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-import { getAllJobCategories, getJobsByCategory } from "../../APIs/api";
-import Loading from "../Loading/Loading";
-import JobCard from "./JobCard";
+import { getAllJobCategories, getAllJobs, getAppliedJobs } from "../APIs/api";
+import Loading from "../Components/Loading/Loading";
+import AppliedJobCard from "../Components/AppliedJobCard";
 
-const AllJobs = () => {
-    // const { user } = useContext(AuthContext);
+const AppliedJobs = () => {
+    const { user } = useContext(AuthContext);
     const [activeTabIndex, setActiveTabIndex] = useState("");
+    const [loadedJobs, setLoadedJobs] = useState([]);
+    const { data: allJobs, isFetched: isFetchedAll } = useQuery({
+        queryKey: ["allJobs"],
+        queryFn: async () => await getAllJobs(),
+    });
     const {
-        data: jobs,
-        refetch,
+        data: appliedjobs,
         isLoading,
         isFetching,
+        isFetched,
+        refetch,
     } = useQuery({
-        queryKey: ["jobs"],
-        queryFn: async () => await getJobsByCategory(activeTabIndex),
+        queryKey: ["appliedjobs"],
+        queryFn: async () => {
+            if (user?.uid) {
+                return await getAppliedJobs(user.uid);
+            } else {
+                return [];
+            }
+        },
     });
-
-    const acitveTab = (index) => {
-        setActiveTabIndex(index);
-    };
-
-    useEffect(() => {
-        refetch();
-    }, [activeTabIndex, refetch]);
 
     const categories = useQuery({
         queryKey: ["categories"],
         queryFn: async () => await getAllJobCategories(),
     });
 
-    if (isLoading || categories.isLoading) {
+    useEffect(() => {
+        setLoadedJobs(appliedjobs);
+        refetch();
+    }, [user?.uid, refetch]);
+
+    if (!user || isLoading || !isFetched || categories.isLoading) {
         return <Loading />;
     }
 
+    const acitveTab = (index) => {
+        setActiveTabIndex(index);
+        if (index.length === 0) {
+            setLoadedJobs(appliedjobs);
+        } else {
+            const filteredJobs = appliedjobs.filter(
+                (job) => job.appJobCat === index
+            );
+            setLoadedJobs(filteredJobs);
+        }
+    };
+
     return (
-        <div className="flex flex-col items-center gap-5">
+        <div>
             <div className="tabs justify-center">
                 <a
                     className={`tab text-xl ${
@@ -67,18 +88,24 @@ const AllJobs = () => {
             <div
                 className={`${
                     isFetching
-                        ? "flex"
+                        ? "flex justify-center"
                         : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
                 }`}
             >
                 {isFetching ? (
                     <Loading />
                 ) : (
-                    jobs.map((job) => <JobCard job={job} key={job._id} />)
+                    loadedJobs.map((job) => (
+                        <AppliedJobCard
+                            job={job}
+                            allJobs={allJobs}
+                            key={job._id}
+                        />
+                    ))
                 )}
             </div>
         </div>
     );
 };
 
-export default AllJobs;
+export default AppliedJobs;

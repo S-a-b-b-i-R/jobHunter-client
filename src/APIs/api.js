@@ -129,3 +129,18 @@ export const deleteJob = async (jobId) => {
         console.log(error);
     }
 };
+
+export const getAppliedJobs = async (userId) => {
+    try {
+        const response = await axios.get(
+            `http://localhost:5000/api/user/appliedjobs/${userId}`,
+            {
+                withCredentials: true,
+            }
+        );
+        const data = await response.data;
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
