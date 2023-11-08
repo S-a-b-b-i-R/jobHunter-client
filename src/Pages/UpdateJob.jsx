@@ -52,7 +52,7 @@ const UpdateJob = () => {
         const companyName = e.target.companyName.value;
         const jobDescription = e.target.jobDescription.value;
         const salaryrange = e.target.salaryrange.value;
-        const lastDate = deadline;
+        const lastDate = deadline.toISOString().slice(0, 10);
         const jobData = {
             jobTitle,
             imageUrl,

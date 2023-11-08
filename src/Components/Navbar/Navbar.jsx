@@ -15,29 +15,14 @@ const Navbar = () => {
             <li>
                 <NavLink to="/alljobs">All Jobs</NavLink>
             </li>
-            <li>
-                <NavLink
-                    className={`${user ? "block" : "hidden"}`}
-                    to="/appliedjobs"
-                >
-                    Applied Jobs
-                </NavLink>
+            <li className={`${user ? "block" : "hidden"}`}>
+                <NavLink to="/appliedjobs">Applied Jobs</NavLink>
             </li>
-            <li>
-                <NavLink
-                    className={`${user ? "block" : "hidden"}`}
-                    to="/addjobs"
-                >
-                    Add A Job
-                </NavLink>
+            <li className={`${user ? "block" : "hidden"}`}>
+                <NavLink to="/addjobs">Add A Job</NavLink>
             </li>
-            <li>
-                <NavLink
-                    className={`${user ? "block" : "hidden"}`}
-                    to="/myjobs"
-                >
-                    My Jobs
-                </NavLink>
+            <li className={`${user ? "block" : "hidden"}`}>
+                <NavLink to="/myjobs">My Jobs</NavLink>
             </li>
             <li>
                 <NavLink to="/blogs">Blogs</NavLink>
