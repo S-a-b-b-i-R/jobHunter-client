@@ -57,7 +57,7 @@ const AppliedJobs = () => {
     };
 
     return (
-        <div>
+        <div className="space-y-5">
             <div className="tabs justify-center">
                 <a
                     className={`tab text-xl ${
