@@ -10,6 +10,7 @@ import AllJobsTable from "../Pages/AllJobsTable";
 import MyJobs from "../Pages/MyJobs";
 import UpdateJob from "../Pages/UpdateJob";
 import AppliedJobs from "../Pages/AppliedJobs";
+import Blogs from "../Pages/Blogs";
 
 const Routes = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/appliedjobs",
                 element: <AppliedJobs />,
+            },
+            {
+                path: "/blogs",
+                element: <Blogs />,
             },
         ],
     },
