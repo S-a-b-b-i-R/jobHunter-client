@@ -8,6 +8,7 @@ import Error from "../Components/Loading/Error";
 import JobDetail from "../Pages/JobDetail";
 import AllJobsTable from "../Pages/AllJobsTable";
 import MyJobs from "../Pages/MyJobs";
+import UpdateJob from "../Pages/UpdateJob";
 
 const Routes = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/myjobs",
                 element: <MyJobs />,
+            },
+            {
+                path: "/updatejob/:id",
+                element: <UpdateJob />,
             },
         ],
     },

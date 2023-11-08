@@ -40,6 +40,19 @@ export const postJob = async (job) => {
     return data;
 };
 
+export const updateJob = async (jobId, jobData) => {
+    console.log(jobId, jobData);
+    const response = await axios.put(
+        `http://localhost:5000/api/jobs/${jobId}`,
+        jobData,
+        {
+            withCredentials: true,
+        }
+    );
+    const data = await response.data;
+    return data;
+};
+
 export const getAllJobs = async () => {
     const response = await axios.get("http://localhost:5000/api/jobs");
     const data = await response.data;

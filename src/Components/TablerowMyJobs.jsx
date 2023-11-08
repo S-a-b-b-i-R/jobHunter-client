@@ -36,7 +36,7 @@ const TablerowMyJobs = ({ job }) => {
             <th>{job.applicantsNumber}</th>
             <th>
                 <button>
-                    <Link className="text-xl">
+                    <Link to={`/updatejob/${job._id}`} className="text-xl">
                         <BiSolidEdit />
                     </Link>
                 </button>

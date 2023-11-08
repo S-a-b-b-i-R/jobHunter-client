@@ -16,7 +16,7 @@ const AllJobsTable = () => {
     });
     useEffect(() => {
         refetch();
-    }, [searchString]);
+    }, [searchString, refetch]);
 
     if (isLoading) {
         return <Loading />;
