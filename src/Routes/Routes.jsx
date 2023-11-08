@@ -7,6 +7,7 @@ import AddJob from "../Pages/AddJob";
 import Error from "../Components/Loading/Error";
 import JobDetail from "../Pages/JobDetail";
 import AllJobsTable from "../Pages/AllJobsTable";
+import MyJobs from "../Pages/MyJobs";
 
 const Routes = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const Routes = createBrowserRouter([
             {
                 path: "/alljobs",
                 element: <AllJobsTable />,
+            },
+            {
+                path: "/myjobs",
+                element: <MyJobs />,
             },
         ],
     },

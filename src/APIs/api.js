@@ -89,3 +89,30 @@ export const getJobsBySearchString = async (searchString) => {
     const data = await response.data;
     return data;
 };
+
+export const getJobsPostedByUser = async (userId) => {
+    try {
+        const response = await axios.get(
+            `http://localhost:5000/api/user/jobs/${userId}`
+        );
+        const data = await response.data;
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const deleteJob = async (jobId) => {
+    try {
+        const response = await axios.delete(
+            `http://localhost:5000/api/jobs/${jobId}`,
+            {
+                withCredentials: true,
+            }
+        );
+        const data = await response.data;
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+};

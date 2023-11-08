@@ -29,7 +29,7 @@ const AllJobsTable = () => {
                     <input
                         type="searchtext"
                         name="searchtext"
-                        placeholder="Search with category..."
+                        placeholder="Search with heywords... (type 'dev' and  click the search icon)"
                         className="input input-bordered w-full focus:outline-none"
                     />
                     <button
