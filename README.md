@@ -18,5 +18,7 @@
         I have used JWT tokens to authenticate users. When a user signs up or logs in, a JWT token is generated and stored in the cookies. When the user logs out, the token is removed. This token is used to authenticate users and protect routes where token is validated before returning data.
 -   [x] **Firebase**
         The app is using Firebase for authentication. Firebase is a Backend-as-a-Service (BaaS) app development platform that provides hosted backend services such as a realtime database, cloud storage, authentication, crash reporting, machine learning, remote configuration, and hosting for your static files. I have used Firebase to create a user authentication system for the app.
+-   [x] **Out of Scope**
+        Admin panel, email verification, forgot password, reset password, etc. are out of scope for this project.
 
-[Demo](https://job-hunter-cb240.web.app/)
+[Demo](https://job-hunter-cb240.firebaseapp.com/)

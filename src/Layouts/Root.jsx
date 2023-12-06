@@ -22,6 +22,8 @@ const Root = () => {
         <div className="space-y-20">
             <div className="max-w-screen-xl mx-auto px-2 md:px-16 lg:px-24">
                 <Navbar />
+            </div>
+            <div className="min-h-[calc(100vh-344px-72px-160px)] max-w-screen-xl mx-auto px-2 md:px-16 lg:px-24 ">
                 <Outlet />
             </div>
             <Footer />
